@@ -1,14 +1,15 @@
-var area = document.getElementById('area');
-var cell = document.getElementsByClassName('cell');
-var currentPlayer = document.getElementById('curPlyr');
+let area = document.getElementById('area');
+let cell = document.getElementsByClassName('cell');
+let currentPlayer = document.getElementById('curPlyr');
 
-var player = "x";
-var stat = {
+
+let player = "x";
+let stat = {
     'x': 0,
     'o': 0,
     'd': 0
 }
-var winIndex = [
+let winIndex = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9],
@@ -19,17 +20,14 @@ var winIndex = [
     [3, 5, 7]
 ];
 
-for (var i = 1; i <= 9; i++) {
-    area.innerHTML += "<div class='cell' pos=" + i + "></div>";
-}
 
-for (var i = 0; i < cell.length; i++) {
+for (let i = 0; i < cell.length; i++) {
     cell[i].addEventListener('click', cellClick, false);
 }
 
 function cellClick() {
 
-    var data = [];
+    let data = [];
 
     if (!this.innerHTML) {
         this.innerHTML = player;
@@ -38,7 +36,7 @@ function cellClick() {
         return;
     }
 
-    for (var i in cell) {
+    for (let i in cell) {
         if (cell[i].innerHTML == player) {
             data.push(parseInt(cell[i].getAttribute('pos')));
         }
@@ -48,8 +46,8 @@ function cellClick() {
         stat[player] += 1;
         restart("Выграл: " + player);
     } else {
-        var draw = true;
-        for (var i in cell) {
+        let draw = true;
+        for (let i in cell) {
             if (cell[i].innerHTML == '') draw = false;
         }
         if (draw) {
@@ -63,11 +61,11 @@ function cellClick() {
 }
 
 function checkWin(data) {
-    for (var i in winIndex) {
-        var win = true;
-        for (var j in winIndex[i]) {
-            var id = winIndex[i][j];
-            var ind = data.indexOf(id);
+    for (let i in winIndex) {
+        let win = true;
+        for (let j in winIndex[i]) {
+            let id = winIndex[i][j];
+            let ind = data.indexOf(id);
 
             if (ind == -1) {
                 win = false
@@ -82,7 +80,7 @@ function checkWin(data) {
 function restart(text) {
 
     alert(text);
-    for (var i = 0; i < cell.length; i++) {
+    for (let i = 0; i < cell.length; i++) {
         cell[i].innerHTML = '';
     }
     updateStat();

@@ -1,42 +1,33 @@
 .content {
-  display: flex;
-  margin: 100px 50px 50px 50px;
-  font-family: sans-serif;
+  width: 270px;
+  overflow: hidden;
+  margin: 50px auto 0 auto;
 }
-
-#area {
-  width: 152px;
-  margin: 0 auto;
-  font-size: 0;
-}
-
-.cell {
-  width: 50px;
-  height: 50px;
+.content span {
+  display: block;
   text-align: center;
-  display: inline-block;
-  font-size: 26px;
+  font-family: sans-serif;
+  font-size: 30px;
+}
+.cell {
+  float: left;
+  width: 90px;
+  height: 90px;
   border: 1px solid #000;
+  transition: all 0.25s ease-in-out;
+  font-size: 85px;
+  text-align: center;
+  line-height: 80px;
   cursor: pointer;
-  vertical-align: middle;
-  transition: background-color 1s linear;
 }
-
-.cell:hover {
-  background-color: #f1f1f1;
+.content .cell:hover {
+  background: rgba(109, 109, 109, 0.11);
+  color: rgb(108, 108, 108);
 }
-
-.currentPlayer {
-  width: 140px;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-}
-
 .stat {
-  display: flex;
   align-items: center;
-  font-size: 18px;
+  font-size: 10px;
+  color: #fff;
 }
 
 .stat table {
@@ -46,18 +37,17 @@
 .stat table,
 .stat th,
 .stat td {
-  border: 1px solid #000;
+  border: 1px solid #fff;
   padding: 5px;
   text-align: center;
 }
-#curPlyr {
-  color: red;
-}
-footer {
-  background-color: #000;
-  position: relative;
-  top: 184px;
+.footer {
   padding: 50px 0px;
   color: #fff;
   text-align: center;
+}
+@media(max-width: 310px){
+    .fav-ico{
+        display: none;
+    }
 }
