@@ -1,4 +1,4 @@
-let area = document.getElementById('area');
+let message = document.getElementById('message')
 let cell = document.getElementsByClassName('cell');
 let currentPlayer = document.getElementById('curPlyr');
 
@@ -32,7 +32,10 @@ function cellClick() {
     if (!this.innerHTML) {
         this.innerHTML = player;
     } else {
-        alert("Ячейка занята");
+        // alert("Ячейка занята");
+
+        message.textContent = 'Ячейка занята'
+        showModal()
         return;
     }
 
@@ -44,7 +47,8 @@ function cellClick() {
 
     if (checkWin(data)) {
         stat[player] += 1;
-        restart("Выграл: " + player);
+        message.textContent = "Выграл: " + player
+        restart();
     } else {
         let draw = true;
         for (let i in cell) {
@@ -52,7 +56,8 @@ function cellClick() {
         }
         if (draw) {
             stat.d += 1;
-            restart("Ничья");
+            message.textContent = 'Ничья'
+            restart()
         }
     }
 
@@ -76,10 +81,12 @@ function checkWin(data) {
     }
     return false;
 }
-
+function showModal() {
+    $("#exampleModal").modal('show');
+}
 function restart(text) {
 
-    alert(text);
+    showModal(text);
     for (let i = 0; i < cell.length; i++) {
         cell[i].innerHTML = '';
     }

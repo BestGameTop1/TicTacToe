@@ -7,6 +7,7 @@
     <title>Tik tak toe Артёма</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="assets/favicon.ico">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -33,7 +34,24 @@
             </div>
         </div>
     </nav>
-    <div class="content" id="main">
+
+
+    <!-- Modal -->
+    <div class="modal fade disp-none" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
         <span>
             <div class="currentPlayer">
                 <span>Сейчас ходит: <span id="curPlyr">X</span></span>
@@ -55,9 +73,9 @@
             <span class="text-muted">Copiright 2022</span>
         </div>
     </footer>
-    <script src="js/main.js"></script>
-    <script src="js/scripts.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
