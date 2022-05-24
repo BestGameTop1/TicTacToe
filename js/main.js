@@ -1,9 +1,7 @@
 let message = document.getElementById('message')
-let cell = document.getElementsByClassName('cell');
-let currentPlayer = document.getElementById('curPlyr');
-
-
-let player = "x";
+let cell = document.getElementsByClassName('cell')
+let currentPlayer = document.getElementById('curPlyr')
+let player = "x"
 let stat = {
     'x': 0,
     'o': 0,
@@ -18,83 +16,76 @@ let winIndex = [
     [3, 6, 9],
     [1, 5, 9],
     [3, 5, 7]
-];
-
-
+]
 for (let i = 0; i < cell.length; i++) {
-    cell[i].addEventListener('click', cellClick, false);
+    cell[i].addEventListener('click', cellClick, false)
 }
-
 function cellClick() {
 
-    let data = [];
+    let data = []
 
     if (!this.innerHTML) {
-        this.innerHTML = player;
+        this.innerHTML = player
     } else {
-        // alert("Ячейка занята");
-
         message.textContent = 'Ячейка занята'
         showModal()
-        return;
+        return
     }
 
     for (let i in cell) {
         if (cell[i].innerHTML == player) {
-            data.push(parseInt(cell[i].getAttribute('pos')));
+            data.push(parseInt(cell[i].getAttribute('pos')))
         }
     }
 
     if (checkWin(data)) {
-        stat[player] += 1;
+        stat[player] += 1
         message.textContent = "Выграл: " + player
-        restart();
+        restart()
     } else {
-        let draw = true;
+        let draw = true
         for (let i in cell) {
-            if (cell[i].innerHTML == '') draw = false;
+            if (cell[i].innerHTML == '') draw = false
         }
         if (draw) {
-            stat.d += 1;
+            stat.d += 1
             message.textContent = 'Ничья'
             restart()
         }
     }
 
-    player = player == "x" ? "o" : "x";
-    currentPlayer.innerHTML = player.toUpperCase();
+    player = player == "x" ? "o" : "x"
+    currentPlayer.innerHTML = player.toUpperCase()
 }
-
 function checkWin(data) {
     for (let i in winIndex) {
-        let win = true;
+        let win = true
         for (let j in winIndex[i]) {
-            let id = winIndex[i][j];
-            let ind = data.indexOf(id);
+            let id = winIndex[i][j]
+            let ind = data.indexOf(id)
 
             if (ind == -1) {
                 win = false
             }
         }
 
-        if (win) return true;
+        if (win) return true
     }
-    return false;
+    return false
 }
 function showModal() {
-    $("#exampleModal").modal('show');
+    $("#exampleModal").modal('show')
 }
 function restart(text) {
 
-    showModal(text);
+    showModal(text)
     for (let i = 0; i < cell.length; i++) {
-        cell[i].innerHTML = '';
+        cell[i].innerHTML = ''
     }
-    updateStat();
+    updateStat()
 }
-
 function updateStat() {
-    document.getElementById('sX').innerHTML = stat.x;
-    document.getElementById('sO').innerHTML = stat.o;
-    document.getElementById('sD').innerHTML = stat.d;
+    document.getElementById('sX').innerHTML = stat.x
+    document.getElementById('sO').innerHTML = stat.o
+    document.getElementById('sD').innerHTML = stat.d
 }

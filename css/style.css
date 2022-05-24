@@ -3,14 +3,12 @@
     overflow: hidden;
     margin: 50px auto 0 auto;
 }
-
 .content span {
     display: block;
     text-align: center;
     font-family: sans-serif;
     font-size: 20px;
 }
-
 .cell {
     float: left;
     width: 60px;
@@ -21,26 +19,21 @@
     text-align: center;
     cursor: pointer;
 }
-
 .content .cell:hover {
     background: rgba(109, 109, 109, 0.11);
     color: rgb(108, 108, 108);
 }
-
 .disp-none {
     display: none;
 }
-
 .stat {
     align-items: center;
     font-size: 10px;
     color: #fff;
 }
-
 .stat table {
     border-collapse: collapse;
 }
-
 .stat table,
 .stat th,
 .stat td {
@@ -48,19 +41,16 @@
     padding: 5px;
     text-align: center;
 }
-
 .footer {
     padding: 50px 0px;
     color: #fff;
     text-align: center;
 }
-
 @media (max-width: 310px) {
     .fav-ico {
         display: none;
     }
 }
-
 @media (max-width: 270px) {
     .stat {
         margin: 0 auto;
