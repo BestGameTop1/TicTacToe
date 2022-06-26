@@ -1,11 +1,12 @@
 let message = document.getElementById('message')
 let cell = document.getElementsByClassName('cell')
 let currentPlayer = document.getElementById('curPlyr')
-let player = "x"
+let modalTitle = document.getElementById('exampleModalLabel')
+let player = "X"
 let stat = {
-    'x': 0,
-    'o': 0,
-    'd': 0
+    'X': 0,
+    'O': 0,
+    'D': 0
 }
 let winIndex = [
     [1, 2, 3],
@@ -27,6 +28,7 @@ function cellClick() {
     if (!this.innerHTML) {
         this.innerHTML = player
     } else {
+        modalTitle.textContent = 'Ячейка занята'
         message.textContent = 'Ячейка занята'
         showModal()
         return
@@ -40,7 +42,8 @@ function cellClick() {
 
     if (checkWin(data)) {
         stat[player] += 1
-        message.textContent = "Выграл: " + player
+        modalTitle.textContent = 'Выграл: ' + player
+        message.textContent = 'Выграл: ' + player
         restart()
     } else {
         let draw = true
@@ -49,12 +52,13 @@ function cellClick() {
         }
         if (draw) {
             stat.d += 1
-            message.textContent = 'Ничья'
+            modalTitle.textContent = 'Ничья!'
+            message.textContent = 'Ничья!'
             restart()
         }
     }
 
-    player = player == "x" ? "o" : "x"
+    player = player == "X" ? "O" : "X"
     currentPlayer.innerHTML = player.toUpperCase()
 }
 function checkWin(data) {
@@ -85,7 +89,7 @@ function restart(text) {
     updateStat()
 }
 function updateStat() {
-    document.getElementById('sX').innerHTML = stat.x
-    document.getElementById('sO').innerHTML = stat.o
-    document.getElementById('sD').innerHTML = stat.d
+    document.getElementById('sX').innerHTML = stat.X
+    document.getElementById('sO').innerHTML = stat.O
+    document.getElementById('sD').innerHTML = stat.D
 }
